@@ -4,12 +4,22 @@
   "description": "Mochi backstage",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "koa": "^2.14.1"
+    "@koa/cors": "^4.0.0",
+    "@koa/router": "^12.0.0",
+    "joi": "^17.7.0",
+    "jsonwebtoken": "^9.0.0",
+    "koa": "^2.14.1",
+    "koa-body": "^5.0.0",
+    "mongoose": "^6.8.3",
+    "superagent": "^8.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
