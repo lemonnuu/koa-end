@@ -47,7 +47,7 @@ const getCosImage = async (ctx) => {
   } else {
     data = JSON.parse(res.text)
     try {
-      data.detail = data.imgurl.split('/img/')[1].split('/')[0]
+      data.detail = data.imgurl.split('/imgapi.cn/')[1].split('/')[0]
     } catch (error) {
       data.detail = ''
     }

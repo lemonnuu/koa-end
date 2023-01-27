@@ -34,37 +34,33 @@ module.exports.index = async (ctx, next) => {
 
 module.exports.list = async (ctx, next) => {
   const res = {
-    code: 200,
-    message: 'success',
-    data: {
-      category: [
-        {
-          id: 'cos',
-          name: 'Cos',
-          urlname: 'cos',
-        },
-        {
-          id: 'beauty',
-          name: '美女',
-          urlname: 'beauty',
-        },
-        {
-          id: 'cartoon',
-          name: '动漫',
-          urlname: 'cartoon',
-        },
-        {
-          id: 'landscape',
-          name: '风景',
-          urlname: 'landscape',
-        },
-        {
-          id: 'bing',
-          name: 'bing图',
-          urlname: 'bing',
-        },
-      ],
-    },
+    category: [
+      {
+        id: 'cos',
+        name: 'Cos',
+        urlname: 'cos',
+      },
+      {
+        id: 'beauty',
+        name: '美女',
+        urlname: 'beauty',
+      },
+      {
+        id: 'cartoon',
+        name: '动漫',
+        urlname: 'cartoon',
+      },
+      {
+        id: 'landscape',
+        name: '风景',
+        urlname: 'landscape',
+      },
+      {
+        id: 'bing',
+        name: 'bing图',
+        urlname: 'bing',
+      },
+    ],
   }
   ctx.body = res
 }
