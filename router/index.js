@@ -6,6 +6,7 @@ const { registerValidate, loginValidate } = require('../middleware/userValdate')
 const { verifyToken } = require('../utils/jwt')
 
 // 图片模块
+router.get('/images/list', verifyToken(false), imageController.list)
 router.get('/images', verifyToken(false), imageController.index)
 
 // 用户模块

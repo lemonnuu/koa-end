@@ -32,6 +32,43 @@ module.exports.index = async (ctx, next) => {
   ctx.body = body
 }
 
+module.exports.list = async (ctx, next) => {
+  const res = {
+    code: 200,
+    message: 'success',
+    data: {
+      category: [
+        {
+          id: 'cos',
+          name: 'Cos',
+          urlname: 'cos',
+        },
+        {
+          id: 'beauty',
+          name: '美女',
+          urlname: 'beauty',
+        },
+        {
+          id: 'cartoon',
+          name: '动漫',
+          urlname: 'cartoon',
+        },
+        {
+          id: 'landscape',
+          name: '风景',
+          urlname: 'landscape',
+        },
+        {
+          id: 'bing',
+          name: 'bing图',
+          urlname: 'bing',
+        },
+      ],
+    },
+  }
+  ctx.body = res
+}
+
 // const dealwithBasic = async (ctx) => {
 //   const query = {
 //     fl: ctx.query.fl || 'suiji', // 类别: meizi | dongman | fengjing | suiji
