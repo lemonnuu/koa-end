@@ -16,7 +16,6 @@ module.exports.loginValidate = async (ctx, next) => {
   if (!emailValidate) {
     ctx.throw(400, '邮箱未被注册')
   }
-  // console.log(schema);
   await next()
 }
 

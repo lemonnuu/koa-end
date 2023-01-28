@@ -1,5 +1,4 @@
-const superagent = require('superagent')
-const { getBingImage } = require('./getImage')
+const { getBingImage, getQQImage } = require('./getImage')
 const helper = require('./helper')
 
 module.exports.index = async (ctx, next) => {
@@ -62,6 +61,11 @@ module.exports.list = async (ctx, next) => {
       },
     ],
   }
+  ctx.body = res
+}
+
+module.exports.qq = async (ctx, next) => {
+  const res = await getQQImage(ctx)
   ctx.body = res
 }
 

@@ -85,8 +85,28 @@ const getBingImage = async (ctx, day) => {
   return data
 }
 
+const getQQImage = async (ctx) => {
+  const { qq } = ctx.params
+  if (!qq || !Number(qq)) {
+    ctx.throw(400, `请输入正确的qq号码!`)
+  }
+  const { body } = await superagent.get(`${config.imagesPath.qqInfo}${qq}`).catch((err) => {
+    if (err && err.response && err.response.body && err.response.body.msg) {
+      ctx.throw(400, err.response.body.msg)
+    } else {
+      ctx.throw(500, 'qq信息接口请求错误')
+    }
+  })
+  if (body && body.data && body.data.avatar && body.data.name) {
+    return body
+  } else {
+    return { code: 400, data: { name: 'null' } }
+  }
+}
+
 module.exports = {
   getBasicImage,
   getCosImage,
   getBingImage,
+  getQQImage,
 }

@@ -28,14 +28,15 @@ const customJudgeQuery = (ctx) => {
     query.category === 'cartoon' ||
     query.category === 'beauty'
   ) {
-    query.terminal = query.terminal || config.defaultTerminal
-    if (!config.usableTerminal.includes(query.terminal)) {
+    if (query.terminal && !config.usableTerminal.includes(query.terminal)) {
       ctx.throw(400, `terminal 值无效, 请重新设置! (${JSON.stringify(config.usableTerminal)})`)
     }
   }
 }
 
 const getImage = async (ctx) => {
+  const random = Math.random()
+  ctx.query.terminal = random < 0.5 ? 'pc' : 'mobile'
   if (config.basicAPi.includes(ctx.query.category)) {
     return await getBasicImage(ctx)
   }
@@ -43,11 +44,9 @@ const getImage = async (ctx) => {
     return await getCosImage(ctx)
   }
   if (ctx.query.category === 'random') {
-    let random = Math.random()
     if (random < 0.25) {
       return await getCosImage(ctx)
     }
-    ctx.query.terminal = random < 0.5 ? 'pc' : 'mobile'
     return await getBasicImage(ctx)
   }
 }
