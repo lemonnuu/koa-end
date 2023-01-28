@@ -104,9 +104,22 @@ const getQQImage = async (ctx) => {
   }
 }
 
+const downloadImage = async (ctx) => {
+  let { imgurl } = ctx.query
+  imgurl = encodeURI(imgurl)
+  if (!imgurl) {
+    ctx.throw(500, '缺少必输参数 imgurl!')
+  }
+  const res = await superagent.get(imgurl)
+  ctx.set('Content-type', 'image/jpeg')
+  // ctx.set('Content-Disposition', 'attachment', 'name')
+  ctx.body = res.body
+}
+
 module.exports = {
   getBasicImage,
   getCosImage,
   getBingImage,
   getQQImage,
+  downloadImage,
 }

@@ -1,4 +1,4 @@
-const { getBingImage, getQQImage } = require('./getImage')
+const { getBingImage, getQQImage, downloadImage } = require('./getImage')
 const helper = require('./helper')
 
 module.exports.index = async (ctx, next) => {
@@ -67,6 +67,10 @@ module.exports.list = async (ctx, next) => {
 module.exports.qq = async (ctx, next) => {
   const res = await getQQImage(ctx)
   ctx.body = res
+}
+
+module.exports.download = async (ctx, next) => {
+  await downloadImage(ctx)
 }
 
 // const dealwithBasic = async (ctx) => {

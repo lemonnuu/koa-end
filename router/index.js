@@ -8,6 +8,7 @@ const { verifyToken } = require('../utils/jwt')
 
 // 图片模块
 router.get('/images/list', verifyToken(false), imageController.list)
+router.get('/images/download', verifyToken(false), imageController.download)
 router.get('/images', verifyToken(false), imageController.index)
 router.get('/images/qq/:qq', verifyToken(false), imageController.qq)
 
