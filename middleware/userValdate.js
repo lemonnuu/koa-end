@@ -2,10 +2,14 @@ const { User } = require('../model')
 
 const Joi = require('joi')
 module.exports.loginValidate = async (ctx, next) => {
+  const target = {
+    email: ctx.request.body.email,
+    password: ctx.request.body.password,
+  }
   const schema = Joi.object({
     password: Joi.string().min(6).required(),
     email: Joi.string().email().required(),
-  }).validate(ctx.request.body)
+  }).validate(target)
 
   if (schema.error) {
     ctx.throw(400, schema.error)
